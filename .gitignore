@@ -1,0 +1,44 @@
+.env
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
+
+# Media (user uploads)
+media/
+
+# =====================
+# Local environment / build
+# =====================
+venv/
+venv.bak/
+env/
+.env.local
+.env.*.local
+/.venv
+/.venv/
+build/
+dist/
+*.egg-info/
+
+
+.vscode/
+
+# =====================
+# OS
+# =====================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+
+*.log
+logs/
+.pytest_cache/
+
+
+
