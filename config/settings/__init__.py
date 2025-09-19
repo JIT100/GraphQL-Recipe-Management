@@ -1,9 +1,12 @@
 import os
 
-# you need to set DEBUG = TRUE or False depending on the enviroment. Debug False is for production & True is for Local.
+# Parse DEBUG from env. Accepts 'True'/'true'/'1' as truthy; defaults to False (production-safe).
+_debug_env = os.environ.get('DEBUG', 'False')
+DEBUG = _debug_env.lower() in ('1', 'true', 'yes')
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 if DEBUG:
-    from .development import *  # noqa
+    # Local development settings
+    from .development import *  
 else:
-    pass
+    # Production settings by default
+    from .production import *  

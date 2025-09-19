@@ -129,7 +129,52 @@ docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
 
 ```
+## Demo user (create_demo_user)
 
+  
+
+- The management command `python manage.py create_demo_user` reads the following environment variables:
+
+-  `DEMO_USERNAME` (username to create/update)
+
+-  `DEMO_PASSWORD` (password to set)
+
+-  `DEMO_EMAIL` (optional email)
+
+-  `DEMO_IS_SUPERUSER` (optional; values `1`, `true`, `yes` are treated as true)
+
+  
+
+- **Behavior**: This is an alternative way to create Demo user, Incase If you can't use `docker-compose run web python manage.py createsuperuser`.  If `DEMO_USERNAME` or `DEMO_PASSWORD` are not provided the command will skip quietly (it prints a short warning and exits successfully). When both are present the command will create or update the user, set the password, and apply the `is_superuser`/`is_staff` flags. This way we can make a default user even when we deploy this app into a cloud service.
+
+  
+
+Example usage snippet:
+
+  
+```powershell
+
+docker-compose run web python manage.py migrate
+
+docker-compose run web python manage.py create_demo_user
+
+```
+
+  
+
+- Example environment variables (You have to set these in your host/service UI of Web service, do not commit them to source control):
+
+-  `DEMO_USERNAME=demo`
+
+-  `DEMO_PASSWORD=<secure-password>`
+
+-  `DEMO_EMAIL=demo@example.com`
+
+-  `DEMO_IS_SUPERUSER=False`
+
+  
+
+- **Security**: Never commit credentials into the repository. Use your hosting provider's secret/env management to store demo account credentials.
   
 
 ## 🖥️ Static files / Admin UI
@@ -273,6 +318,8 @@ Mutations and queries are implemented in `recipe/schema.py` and mutations genera
 - **Permissions**: Strawberry permission classes (e.g. an `IsAuthenticated` permission) used to avoid repeating authentication checks in every resolver.
 
 - **Performance**: The `recipes` resolver uses `prefetch_related('ingredients')` to avoid N+1 queries when resolving nested ingredients.
+
+**Notes**: The `create_demo_user` command reads `DEMO_USERNAME` and `DEMO_PASSWORD` from env and will create or update the account ( For Render Webhosting's default User). By Default : `DEMO_USERNAME` is Admin & `DEMO_PASSWORD` is 1234.
 
   
 

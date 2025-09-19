@@ -24,3 +24,4 @@ strawberry-graphql-django==0.65.1
 types-PyYAML==6.0.12.20250915
 typing_extensions==4.15.0
 whitenoise==6.11.0
+dj-database-url==1.2.0
