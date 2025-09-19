@@ -14,7 +14,6 @@ class Command(BaseCommand):
         is_super = os.environ.get('DEMO_IS_SUPERUSER', 'False').lower() in ('1', 'true', 'yes')
 
         if not username or not password:
-            # Don't treat missing demo credentials as an error; skip quietly in development.
             self.stdout.write(self.style.WARNING('DEMO_USERNAME or DEMO_PASSWORD not set; skipping demo user creation.'))
             return
 

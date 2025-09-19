@@ -6,6 +6,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from . import schema as recipe_schema
 from strawberry.django.views import GraphQLView
+from .views import home_redirect
 
 
 def auth_graphql_view(request):
@@ -26,5 +27,6 @@ def auth_graphql_view(request):
 
 
 urlpatterns = [
+    path('', home_redirect),
     path('graphql/', csrf_exempt(auth_graphql_view)),
 ]

@@ -129,7 +129,7 @@ docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
 
 ```
-## Demo user (create_demo_user)
+## 🏂 Demo user (create_demo_user)
 
   
 
