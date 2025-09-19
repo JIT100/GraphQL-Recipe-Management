@@ -1,8 +1,0 @@
-version: '3.8'
-services:
-  web:
-    command: gunicorn --reload --workers 1 config.wsgi:application --bind 0.0.0.0:8000
-    environment:
-      - DEBUG=True
-    volumes:
-      - .:/app

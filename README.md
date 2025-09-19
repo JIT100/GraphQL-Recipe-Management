@@ -52,7 +52,6 @@ Other important files:
 
 - **`Dockerfile`**, **`docker-compose.yml`** - Docker configuration
 
-- **`docker-compose.override.yml`** - development override (runs gunicorn with `--reload`)
 
 - **`.env`** - environment variables used by Docker and Django (should not be committed)
 
@@ -100,9 +99,6 @@ docker-compose logs -f web
 
 ```
 
-  
-
-The `docker-compose.override.yml` file (if present) will cause the `web` service to run Gunicorn with `--reload` in development so changes are picked up without rebuilding.
 
   
 
