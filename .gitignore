@@ -40,5 +40,7 @@ desktop.ini
 logs/
 .pytest_cache/
 
+staticfiles/
+
 
 
