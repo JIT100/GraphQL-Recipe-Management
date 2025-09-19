@@ -183,7 +183,7 @@ Static files are collected during the Docker build and served by **WhiteNoise**.
 
 - Confirm `whitenoise` is present in `requirements.txt` and `WhiteNoiseMiddleware` is added to `MIDDLEWARE` in `config/settings/base.py`.
 
-- Rebuild the image so `collectstatic` runs with the current project files:
+- Rebuild the image to pick up changes:
 
   
 
@@ -315,7 +315,7 @@ Mutations and queries are implemented in `recipe/schema.py` and mutations genera
 
 - **Performance**: The `recipes` resolver uses `prefetch_related('ingredients')` to avoid N+1 queries when resolving nested ingredients.
 
-**Notes**: The `create_demo_user` command reads `DEMO_USERNAME` and `DEMO_PASSWORD` from env and will create or update the account ( For Render Webhosting's default User). By Default : `DEMO_USERNAME` is Admin & `DEMO_PASSWORD` is 1234.
+**Notes**: The `create_demo_user` command reads `DEMO_USERNAME` and `DEMO_PASSWORD` from env and will create or update the account. No default credentials are set in the code.
 
   
 
